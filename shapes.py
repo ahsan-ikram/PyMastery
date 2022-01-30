@@ -5,13 +5,21 @@ def square(width: int = 10) -> None:
         print('', sep='')
 
 
-# TODO: add orientation parameter to the function
-def right_triangle(width: int = 10) -> None:
-    for i in range(width):
-        for j in range(width):
-            if j <= i:
-                print('*', sep='', end='')
-        print('', sep='')
+def right_triangle(width: int = 10, left_orient: bool = True) -> None:
+    if left_orient:
+        for i in range(width):
+            for j in range(width):
+                if j <= i:
+                    print('*', sep='', end='')
+            print('', sep='')
+    else:
+        for i in reversed(range(width)):
+            for j in range(width):
+                if j >= i:
+                    print('*', sep='', end='')
+                else:
+                    print(' ', sep='', end='')
+            print('', sep='')
 
 
 def triangle(width: int = 11) -> None:
@@ -35,7 +43,7 @@ def diamond(width: int = 11) -> None:
                 else:
                     print(' ', sep='', end='')
             else:
-                if i - center <= j <= center + width - i -1:
+                if i - center <= j <= center + width - i - 1:
                     print('*', sep='', end='')
                 else:
                     print(' ', sep='', end='')
@@ -43,7 +51,11 @@ def diamond(width: int = 11) -> None:
 
 
 def main():
-    diamond(21)
+    square()
+    right_triangle()
+    right_triangle(left_orient=False)
+    triangle()
+    diamond()
 
 
 if __name__ == '__main__':
