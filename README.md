@@ -1,4 +1,4 @@
-# CodeChallenge
+# Code Challenge
 
 1. A bunch of code snippet with sole purpose of understanding language dynamics.
 1. Refreshing algorithmic and heuristic designing capabilities.
