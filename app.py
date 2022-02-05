@@ -1,4 +1,4 @@
-import other
+from src import other
 
 
 # Challenge No. 1
