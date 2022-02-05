@@ -1,3 +1,6 @@
+import time
+
+
 # Fibonacci Numbers
 # f(x) = f(x-1) + f(x-2)
 # where x is integer and x >= 0
@@ -22,8 +25,15 @@ def iterative_fib(index: int) -> int:
 
 
 def main():
+    start = time.perf_counter()
     print(f'iterative_fib(10) = {iterative_fib(15)}')
+    end = time.perf_counter()
+    print(f'Iterative approach time = {end - start} seconds')
+
+    start = time.perf_counter()
     print(f'recursive_fib(10) = {recursive_fib(15)}')
+    end = time.perf_counter()
+    print(f'Recursive approach time = {end - start} seconds')
 
 
 if __name__ == '__main__':

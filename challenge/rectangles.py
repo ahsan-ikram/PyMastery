@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+import typing
+from utils.vertex import Vertex
 
 
 # Problem
@@ -11,14 +12,14 @@ from dataclasses import dataclass
 # (0,0), (0,1), (0,2), (1,0), (1,1), (1,2), (2,0), (2,1), (2,2) -> 9
 # (0,0), (0,1), (0,2), (1,0), (1,1), (1,2), (2,0), (2,1), (2,2), (2,3) -> 9
 
-@dataclass
-class Point:
-    x: int
-    y: int
+def count_rectangles(vertices: typing.List[Vertex]):
+    if vertices is None or len(vertices) < 4:
+        return 0
+    return -1
 
 
 def main():
-    pass
+    print(f'Rectangles detected = {count_rectangles(None)}')
 
 
 if __name__ == '__main__':

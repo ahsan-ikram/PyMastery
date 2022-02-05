@@ -1,4 +1,4 @@
-from src import other
+from challenge import other
 
 
 # Challenge No. 1
