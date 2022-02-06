@@ -1,4 +1,5 @@
-from challenge import other
+import utils.snippets
+from challenge import xifo
 
 
 # Challenge No. 1
@@ -24,7 +25,7 @@ def myfunction(arg: str):
 
 def main():
     print(f'app.py module = {__name__} {hex(id(__name__))}')
-    other.display_builtin_name()
+    utils.snippets.display_builtin_name()
     print(f'app.py module = {__name__} {hex(id(__name__))}')
 
 
