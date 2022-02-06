@@ -6,7 +6,7 @@ Not Recommended for serious applications
 """
 
 import sqlite3
-from patterns.patterns import Singleton
+from patterns.Singleton import Singleton
 
 
 class SQLiteDatabase(metaclass=Singleton):
