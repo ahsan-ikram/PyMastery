@@ -1,6 +1,11 @@
-import sqlite3
+"""
+Relational database CRUD operations using SQL
+The Python Database API (DB-API) defines a standard interface for Python database access modules.
+It’s documented in PEP 249.
+Not Recommended for serious applications
+"""
 
-# Relational database CRUD operations using SQL
+import sqlite3
 from patterns.patterns import Singleton
 
 
