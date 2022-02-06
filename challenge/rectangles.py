@@ -15,11 +15,17 @@ from utils.vertex import Vertex
 def count_rectangles(vertices: typing.List[Vertex]):
     if vertices is None or len(vertices) < 4:
         return 0
+    # Implement the Logic
+    for vertex in vertices:
+        x,y = vertex
+
     return -1
 
 
 def main():
-    print(f'Rectangles detected = {count_rectangles(None)}')
+    mydict = {'2': 'b', '1': 'a'}
+    print(mydict)
+    print(f'Rectangles detected = {count_rectangles([])}')
 
 
 if __name__ == '__main__':
