@@ -1,9 +1,8 @@
 import utils.snippets
-from challenge import xifo
 
 
 # Challenge No. 1
-# Given a n digit number is equal to sum to individual digits raise to the power total digits
+# Given n digit number is equal to sum to individual digits raise to the power total digits
 # Example
 
 # 2 = pow(2,1)
