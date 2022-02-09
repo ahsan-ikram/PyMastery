@@ -80,7 +80,7 @@ class DogHandler(AbstractHandler):
             return super().handle(request)
 
 
-def client_code(handler: Handler) -> None:
+def client_client(handler: Handler) -> None:
     """
     The client code is usually suited to work with a single handler. In most
     cases, it is not even aware that the handler is part of a chain.
@@ -96,17 +96,19 @@ def client_code(handler: Handler) -> None:
 
 
 if __name__ == "__main__":
+    # Configuration
     monkey = MonkeyHandler()
     squirrel = SquirrelHandler()
     dog = DogHandler()
 
     monkey.set_next(squirrel).set_next(dog)
 
-    # The client should be able to send a request to any handler, not just the
-    # first one in the chain.
+    # The client should be able to send a request to any handler,
+    # Not just the first one in the chain.
+    # Single directional chain
     print("Chain: Monkey > Squirrel > Dog")
-    client_code(monkey)
+    client_client(monkey)
     print("\n")
 
     print("Sub chain: Squirrel > Dog")
-    client_code(squirrel)
+    client_client(squirrel)
