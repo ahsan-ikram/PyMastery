@@ -20,10 +20,13 @@ class Vector:
         """ Dunder string representation  """
         return f"vector.x = {self.x} vector.y = {self.y}"
 
+    def __del__(self):
+        print("Vector object is deleted")
+
 
 def main():
     v1 = Vector(1, 2)
-    v2 = Vector(1, 2)
+    v2 = Vector(4, 9)
     v = v1 + v2
     print(v)
 
