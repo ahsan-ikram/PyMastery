@@ -9,16 +9,16 @@ underscores, for example __str__ or __add__. Other names are Python Magic Functi
 class Vector:
     def __init__(self, x, y):
         """ Dunder initializer """
-        self.x = x
-        self.y = y
+        self.__x = x
+        self.__y = y
 
     def __add__(self, other):
         """ Dunder operator overloading - oop """
-        return Vector(self.x + other.x, self.y + other.y)
+        return Vector(self.__x + other.__x, self.__y + other.__y)
 
     def __repr__(self):
         """ Dunder string representation  """
-        return f"vector.x = {self.x} vector.y = {self.y}"
+        return f"vector.x = {self.__x} vector.y = {self.__y}"
 
     def __del__(self):
         print("Vector object is deleted")
