@@ -1,5 +1,3 @@
-import string
-
 """
 Generator is type of Iterator
 Generator -> Functions that act like Iterators
@@ -30,13 +28,3 @@ print(f"g() return {result}")
 
 for i in result:
     print(i)
-
-
-def letters():
-    for c in string.ascii_lowercase:
-        yield c
-
-
-# Generates letter during each loop iteration
-for letter in letters():
-    print(letter)
