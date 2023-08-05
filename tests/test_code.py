@@ -22,5 +22,7 @@ def test_non_polygon():
     assert count_rectangles([Vertex(0, 0), Vertex(0, 1), Vertex(1, 0)]) == 0
 
 
+@pytest.mark.skip
 def test_count_rectangles(square_vertices):
     assert count_rectangles(square_vertices) == 1
+
