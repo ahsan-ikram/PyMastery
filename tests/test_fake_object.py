@@ -17,7 +17,7 @@ from tests.usecases import Teacher
 
 @patch('tests.usecases.Teacher', spec=Teacher)
 @patch('tests.usecases.Student', spec=Student)
-def test_classroom_has_teacher(fake_student, fake_teacher) -> None:
+def test_classroom_both_teacher_student(fake_student, fake_teacher) -> None:
     """ Mind the reverse order of assignment
     """
     classroom: Classroom = Classroom()
