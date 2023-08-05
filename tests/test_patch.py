@@ -24,7 +24,7 @@ def api_response() -> str:
     return "success" if third_party_dependency() == 200 else "failure"
 
 
-@patch("tests.usecases.third_party_dependency")
+@patch("tests.test_patch.third_party_dependency")
 def test_api_response(mocker):
     mocker.return_value = 200
     assert api_response() == "success"
