@@ -10,23 +10,27 @@ class Teacher:
 
 
 class Student:
-    pass
+    def __init__(self, name):
+        self.name = name
+
+    def get_name(self):
+        return self.name
 
 
 class Classroom:
 
     def __init__(self, teacher: Teacher = None, student: Student = None):
-        self.teacher = student
-        self.student = teacher
-        self.has_student = True if student is not None else False
-        self.has_teacher = True if teacher is not None else False
+        self.teacher = teacher
+        self.students = [] if student is None else [student]
+        self.has_student = False if student is None else True
+        self.has_teacher = False if teacher is None else True
 
     def assign_teacher(self, teacher: Teacher):
         self.teacher = teacher
         self.has_teacher = True
 
     def add_student(self, student: Student):
-        self.student = student
+        self.students.append(student)
         self.has_student = True
 
 
