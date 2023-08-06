@@ -1,3 +1,5 @@
+import random
+
 import requests
 from requests import Response
 
@@ -6,7 +8,11 @@ from requests import Response
 
 
 class Teacher:
-    pass
+    def __init__(self, name):
+        self.name = name
+
+    def compute_salary(self):
+        return random.randint(len(self.name), 1000)
 
 
 class Student:
@@ -15,6 +21,13 @@ class Student:
 
     def get_name(self):
         return self.name
+
+
+STUDENT = Student("haroon")
+
+
+def get_student_name() -> str:
+    return STUDENT.name
 
 
 class Classroom:
