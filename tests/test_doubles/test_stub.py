@@ -2,7 +2,6 @@ from unittest.mock import patch
 
 from tests.usecases import Classroom
 from tests.usecases import Student
-from tests.usecases import Teacher
 
 
 @patch('tests.usecases.Student', spec=Student)
