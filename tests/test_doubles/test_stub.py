@@ -6,7 +6,7 @@ from tests.usecases import Student
 
 @patch('tests.usecases.Student', spec=Student)
 def test_count_students(fake_student) -> None:
-    # create a method stub for `get_name` method
+    # Stub for "get_name" method
     fake_student.get_name.return_value = "fake student"
 
     classroom: Classroom = Classroom(student=fake_student)
