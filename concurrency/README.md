@@ -1,9 +1,13 @@
+# Major Concurrency Models
 
-Concurrency models in programming are the different approaches used to manage multiple tasks executing at the same time. The most common models are shared memory (threads), message passing (actors/channels), event-driven loops, and dataflow/reactive systems.
+Concurrency models in programming are the different approaches used to manage multiple tasks executing at the same time. The most common models are 
+- Shared Memory / Threads
+- Message Passing / Actor Model
+- Dataflow / Reactive Programming
+- Fork/Join & Parallelism
 
 ---
 
-# Major Concurrency Models
 
 ### Shared Memory / Threads
 
