@@ -1,0 +1,30 @@
+import asyncio
+from typing import Coroutine, Any
+
+
+async def couroutine_iterator() -> Coroutine[Any, Any, bool]:
+    """
+    Any function defined with 'async def' is a coroutine.
+    Coroutines are special functions that can pause and resume their execution.
+    They are the building blocks of asynchronous programming in Python.
+    The return type of a coroutine is a coroutine object.
+    Event loop is responsible for managing and executing these coroutines.
+
+
+    :return: Coroutine object.
+    First Any: type of values that can be sent into the coroutine (send()).
+        Second Any: type of values that can be thrown into the coroutine (throw()).
+        Third bool: type of the value returned when the coroutine is awaited.
+    :rtype: Coroutine[Any, Any, bool]
+    """
+    print("Couroutine started ...")
+    for i in range(5):
+        print(f"Couroutine working on iteration {i}")
+        # This 5 seconds sleep simulates an I/O-bound operation
+        # Other tasks can run while this coroutine is waiting
+        await asyncio.sleep(5)
+    print("Couroutine ended!")
+    return True
+
+
+asyncio.run(couroutine_iterator())
