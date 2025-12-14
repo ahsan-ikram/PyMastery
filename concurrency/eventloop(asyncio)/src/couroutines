@@ -1,8 +1,36 @@
 import asyncio
-from typing import Coroutine, Any
+
+"""
+This module demonstrates coroutine type annotations.
+
+Although calling an `async def` function produces a coroutine object,
+the recommended return annotation is the *awaited result*, not the
+coroutine object itself. For example:
+
+    async def worker() -> None:
+        ...
+
+Here, `-> None` indicates that awaiting the coroutine yields no value.
+This is clearer and more idiomatic than writing:
+
+    async def worker() -> Coroutine[Any, Any, None]:
+        ...
+
+Both forms are technically valid, but `-> None` (or `-> T` for a value)
+is preferred because:
+
+- It communicates the *result of awaiting* the coroutine, which is what
+  most readers and type checkers care about.
+- It avoids verbose `Coroutine[...]` signatures except in advanced
+  library code where the coroutine object itself is manipulated.
+- It aligns with community practice and improves readability.
+
+In short: use `-> None` (or `-> T`) to describe what the coroutine
+returns when awaited, rather than the raw coroutine object.
+"""
 
 
-async def couroutine_iterator() -> Coroutine[Any, Any, bool]:
+async def couroutine_iterator() -> None:
     """
     Any function defined with 'async def' is a coroutine.
     Coroutines are special functions that can pause and resume their execution.
@@ -10,12 +38,12 @@ async def couroutine_iterator() -> Coroutine[Any, Any, bool]:
     The return type of a coroutine is a coroutine object.
     Event loop is responsible for managing and executing these coroutines.
 
+    Args:
+        None: No arguments.
 
-    :return: Coroutine object.
-    First Any: type of values that can be sent into the coroutine (send()).
-        Second Any: type of values that can be thrown into the coroutine (throw()).
-        Third bool: type of the value returned when the coroutine is awaited.
-    :rtype: Coroutine[Any, Any, bool]
+    Returns:
+        None: No return value.
+
     """
     print("Couroutine started ...")
     for i in range(5):
@@ -24,7 +52,6 @@ async def couroutine_iterator() -> Coroutine[Any, Any, bool]:
         # Other tasks can run while this coroutine is waiting
         await asyncio.sleep(5)
     print("Couroutine ended!")
-    return True
 
 
 asyncio.run(couroutine_iterator())
