@@ -116,6 +116,7 @@ async def tasks_group():
     tasks: Any = []
     start: float = time.time()
     # Usign async conext manager to ensure all tasks are awaited and exceptions handled properly
+    # Context manager is a blocking part of code. It waits for all tasks inside to complete
     async with asyncio.TaskGroup() as tg:
         tasks.append(tg.create_task(fetch_api_data()))
         tasks.append(tg.create_task(fetch_local_data()))
