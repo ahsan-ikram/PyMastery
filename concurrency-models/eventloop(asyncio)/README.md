@@ -8,7 +8,7 @@
 # Main Concepts 
 
 ## 🧩 5 Core Concepts 
--  Event Loop → the scheduler that runs everything.
+- Event Loop → the scheduler that runs everything.
 - Coroutines → async functions that can pause/resume.
 - Tasks → wrappers that schedule coroutines on the loop.
 - Futures → low‑level objects representing a result that isn’t ready yet.
