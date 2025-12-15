@@ -1,5 +1,6 @@
 import asyncio
 import time
+from typing import Any
 
 
 SLEEP_TIME = 2
@@ -8,6 +9,9 @@ SLEEP_TIME = 2
 async def fetch_api_data(*args, **kwargs) -> dict:
     print("Fetching data from api...")
     await asyncio.sleep(SLEEP_TIME)  # Simulate a network delay
+    # asyncio.gather can be used to handle exceptions from multiple coroutines
+    # asyncio.TaskGroup (Python 3.11+) is better at handling exceptions in tasks
+    # raise Exception("API fetch failed!")  # Simulate an API failure
     print("Data fetched from api")
     return {"API_Response": "Something from external API"}
 
@@ -85,6 +89,16 @@ async def await_tasks():
 async def gather_tasks():
     print("\n\nStarting execution of tasks using asyncio.gather for clean code...")
     start: float = time.time()
+
+    # Pros:
+    #   Gather runs the coroutines concurrently and returns their results
+    #   Clean and concise code
+    # Cons:
+    #   Not good at handling individual task exceptions
+    #   Do not cancel tasks if one fails. If one task fails, others continue to run
+    #   If not manully handled, exceptions may be lost and weired state may occur
+    #   Preferable to use TaskGroups in Python 3.11+
+
     results = await asyncio.gather(fetch_api_data(), fetch_local_data())
     end: float = time.time()
 
@@ -94,6 +108,26 @@ async def gather_tasks():
         print(f"Result: {result}")
 
 
+async def tasks_group():
+    print(
+        "\n\nStarting execution of tasks using asyncio.asyncio.TaskGroup for better exception handling..."
+    )
+
+    tasks: Any = []
+    start: float = time.time()
+    # Usign async conext manager to ensure all tasks are awaited and exceptions handled properly
+    async with asyncio.TaskGroup() as tg:
+        tasks.append(tg.create_task(fetch_api_data()))
+        tasks.append(tg.create_task(fetch_local_data()))
+    end: float = time.time()
+    results = [task.result() for task in tasks]
+    print(f"\nTasks execution took {end - start} seconds.\n\n")
+
+    for result in results:
+        print(f"Result: {result}")
+
+
 # asyncio.run(await_couroutines())
 # asyncio.run(await_tasks())
-asyncio.run(gather_tasks())
+# asyncio.run(gather_tasks())
+asyncio.run(tasks_group())
