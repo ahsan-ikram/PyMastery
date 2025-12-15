@@ -55,5 +55,29 @@ async def main_using_semaphores():
     )
 
 
+async def waiter(event: asyncio.Event):
+    task_id = id(asyncio.current_task())
+    print(f"Waiting for event to be set. Waiter task_id={task_id}")
+    await event.wait()
+    print(f"Event has been set. Now continue execution in Waiter task_id={task_id}")
+
+
+async def setter(event: asyncio.Event):
+    task_id = id(asyncio.current_task())
+    await asyncio.sleep(5)
+    event.set()
+    print(f"Event has been set. Setter task_id={task_id}")
+
+
+async def main_using_event():
+    """
+    Simple event, work as boolean flag to wait for something and then continoue execution
+    """
+    event: asyncio.Event = asyncio.Event()
+    await asyncio.gather(waiter(event), setter(event))
+
+
 # asyncio.run(main_using_lock())
-asyncio.run(main_using_semaphores())
+# asyncio.run(main_using_semaphores())
+asyncio.run(main_using_event())
+# TODO: asyncio.run(main_using_condition())
