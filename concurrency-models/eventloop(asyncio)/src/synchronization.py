@@ -47,7 +47,8 @@ async def main_using_lock():
 
 
 async def main_using_semaphores():
-    # Don't overload API calls or shared resource access
+    # Throttle access to shared resource.
+    # Don't overload shared resource access
     semaphore = asyncio.Semaphore(3)  # Limit to 3 concurrent accesses
     await asyncio.gather(
         *[access_shared_resource_simultaneously(semaphore) for _ in range(9)]
