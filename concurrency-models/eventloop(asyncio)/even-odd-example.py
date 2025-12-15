@@ -6,10 +6,10 @@ async def even():
     for i in range(10):
         if i % 2 == 0:
             print(i)
-        print("Even sleeping now")
+        print("Even is sleeping now")
         await asyncio.sleep(0.25)
     print("Even numbers ended!")
-    return {'status': 'even success'}
+    return {"status": "even success"}
 
 
 async def odd():
@@ -21,7 +21,7 @@ async def odd():
         await asyncio.sleep(0.25)
 
     print("Odd numbers ended!")
-    return {'status': 'odd success'}
+    return {"status": "odd success"}
 
 
 async def main():
@@ -31,8 +31,8 @@ async def main():
     future_1 = await task_1
     future_2 = await task_2
 
-    # Telling program to finish all tasks before moving forward
     print(future_1)
     print(future_2)
+
 
 asyncio.run(main())
